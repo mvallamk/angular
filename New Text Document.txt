@@ -1,0 +1,16 @@
+#include<algorithm>
+int solution(vector<int> &A) {
+   int n=A.size();
+   pair<int,int> C[n];
+   for(int i=0;i<n;i++)
+   {
+       C[i].first=A[i];
+       C[i].second=i;
+   }
+   sort(C,C+n);
+   int difference=-1;
+   for(int i=1;i<n;i++)
+   if(A[C[i].second]!=A[C[i-1].second])
+   difference=max(difference,abs(C[i].second-C[i-1].second));
+   return difference;
+}
